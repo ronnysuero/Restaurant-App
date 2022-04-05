@@ -17,7 +17,7 @@ RUN CGO_ENABLED=0 go build -installsuffix 'static'
 RUN CGO_ENABLED=0 go test -c ./controllers -o controllers.test -cover
 
 #final stage
-FROM alpine:latest
+FROM alpine:3.15.4
 RUN apk --no-cache add ca-certificates
 COPY --from=builder /src ./
 CMD ["./basket.api"] 
