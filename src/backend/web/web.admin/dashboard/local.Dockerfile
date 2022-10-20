@@ -8,7 +8,7 @@ COPY . ./
 RUN yarn build --configuration=local-docker --base-href=/dashboard/ --deploy-url=/dashboard/
 
 # Stage 2
-FROM nginx:alpine
+FROM nginx:1.23.2-alpine
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /usr/src/app/dist/dashboard /usr/share/nginx/html
 EXPOSE 80
