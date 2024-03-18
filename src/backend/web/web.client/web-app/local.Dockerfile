@@ -8,7 +8,7 @@ COPY . ./
 RUN yarn build
 
 # Stage 2
-FROM nginx:alpine
+FROM nginx:1.25.4-alpine3.18
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /usr/src/app/dist/dashboard /usr/share/nginx/html
 EXPOSE 80
